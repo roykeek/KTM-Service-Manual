@@ -316,7 +316,7 @@
             </ul>
             <a href="KTM790_2020_ServiceManual.pdf" download class="download-link" aria-label="Download KTM 790 Service Manual PDF">📥 Download Service Manual</a>
         </div>
-        <iframe src="https://cdn.jsdelivr.net/gh/roykeek/KTM-Service-Manual/KTM790_2020_ServiceManual.pdf" name="pdf-frame" id="pdf-frame" title="KTM 790 Adventure R Service Manual PDF Viewer" aria-label="Service manual PDF viewer">
+        <iframe src="https://mozilla.github.io/pdf.js/web/viewer.html?file=https://cdn.jsdelivr.net/gh/roykeek/KTM-Service-Manual/KTM790_2020_ServiceManual.pdf" name="pdf-frame" id="pdf-frame" title="KTM 790 Adventure R Service Manual PDF Viewer" aria-label="Service manual PDF viewer">
             <p>Your browser does not support iframes. Please use the download link above to view the manual.</p>
         </iframe>
     </div>
@@ -356,14 +356,13 @@
         link.addEventListener('click', function(e) {
             e.preventDefault();
             const href = this.getAttribute('href');
-            // Extract page number and update iframe src with page anchor
+            // Extract page number
             const pageNum = href.match(/#page=(\d+)/)?.[1];
-            const pdfUrl = 'https://cdn.jsdelivr.net/gh/roykeek/KTM-Service-Manual/KTM790_2020_ServiceManual.pdf';
-            // Force reload by clearing src, waiting, then setting new src with page
-            iframe.src = '';
-            setTimeout(() => {
-                iframe.src = `${pdfUrl}${pageNum ? '#page=' + pageNum : ''}`;
-            }, 50);
+            if (pageNum) {
+                // Use PDF.js viewer with page parameter
+                const pdfUrl = 'https://mozilla.github.io/pdf.js/web/viewer.html?file=https://cdn.jsdelivr.net/gh/roykeek/KTM-Service-Manual/KTM790_2020_ServiceManual.pdf%23page=' + pageNum;
+                iframe.src = pdfUrl;
+            }
         });
     });
     
