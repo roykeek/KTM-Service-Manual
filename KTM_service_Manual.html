@@ -359,7 +359,11 @@
             // Extract page number and update iframe src with page anchor
             const pageNum = href.match(/#page=(\d+)/)?.[1];
             const pdfUrl = 'https://cdn.jsdelivr.net/gh/roykeek/KTM-Service-Manual/KTM790_2020_ServiceManual.pdf';
-            iframe.src = `${pdfUrl}${pageNum ? '#page=' + pageNum : ''}`;
+            // Force reload by clearing src, waiting, then setting new src with page
+            iframe.src = '';
+            setTimeout(() => {
+                iframe.src = `${pdfUrl}${pageNum ? '#page=' + pageNum : ''}`;
+            }, 50);
         });
     });
     
