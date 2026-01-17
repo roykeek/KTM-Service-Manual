@@ -351,15 +351,15 @@
         iframe.style.display = 'none';
     });
     
-    // Handle PDF page navigation clicks - open in new tab with correct page
+    // Handle PDF page navigation clicks - navigate within iframe
     document.querySelectorAll('.page-link').forEach(link => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
             const href = this.getAttribute('href');
-            // Extract page number and open the PDF with page anchor
+            // Extract page number and update iframe src with page anchor
             const pageNum = href.match(/#page=(\d+)/)?.[1];
             const pdfUrl = 'https://cdn.jsdelivr.net/gh/roykeek/KTM-Service-Manual/KTM790_2020_ServiceManual.pdf';
-            window.open(`${pdfUrl}${pageNum ? '#page=' + pageNum : ''}`, '_blank');
+            iframe.src = `${pdfUrl}${pageNum ? '#page=' + pageNum : ''}`;
         });
     });
     
