@@ -19,10 +19,10 @@ An interactive web-based service schedule reference tool for the KTM 790 Adventu
 
 ## Files Required
 
-- `KTM_service_Manual.html` - The main HTML file
-- `KTM790_2020_ServiceManual.pdf` - The KTM service manual PDF
+- `index.html` or `KTM_service_Manual.html` - The main HTML file
+- `KTM790_2020_ServiceManual.pdf` - The KTM service manual PDF (stored in the repository)
 
-Both files must be in the same directory.
+Note: The PDF is served via jsDelivr CDN for reliable cross-platform compatibility, so you don't need to have the PDF file locally when accessing online.
 
 ## How to Use
 
@@ -47,11 +47,11 @@ Both files must be in the same directory.
 2. Right-click `KTM_service_Manual.html` in VS Code
 3. Select "Open with Live Server"
 
-### Option 3: Open Directly (Limited Functionality)
+### Option 3: Open Directly (Full Functionality Online)
 
 1. Double-click `KTM_service_Manual.html` to open in your default browser
-2. **Note**: The PDF viewer will not work due to browser security restrictions
-3. You can still click page numbers - they will open the PDF in a new tab
+2. **Local Usage**: PDF will work if files are served through a web server
+3. **Online Usage**: Visit the GitHub Pages URL for full functionality with CDN-served PDF
 
 ## Browser Compatibility
 
@@ -110,10 +110,10 @@ Host the files online for free:
 ## Troubleshooting
 
 **Problem**: PDF doesn't display in the right panel  
-**Solution**: Make sure you're running the HTML through a web server (Option 1 or 2 above), not opening it directly as a file.
+**Solution**: The application works best when accessed online or through a web server. For local testing, use a Python web server or VS Code Live Server. The PDF is served via jsDelivr CDN for maximum compatibility.
 
-**Problem**: Clicking page numbers doesn't navigate the PDF  
-**Solution**: Refresh your browser page after starting the web server.
+**Problem**: Clicking page numbers doesn't navigate to the correct page  
+**Solution**: Ensure you're using an updated version of the application. Page navigation now uses direct PDF anchor links via jsDelivr.
 
 **Problem**: PDF file not found  
 **Solution**: Ensure `KTM790_2020_ServiceManual.pdf` is in the same folder as the HTML file.
@@ -121,10 +121,12 @@ Host the files online for free:
 ## Technical Details
 
 - Pure HTML, CSS, and JavaScript - no external dependencies
-- Uses iframe for PDF embedding
-- JavaScript handles page navigation for cross-browser compatibility
-- Responsive flexbox layout
+- PDF served via jsDelivr CDN for cross-platform compatibility (desktop and mobile)
+- Uses iframe for PDF embedding with fallback support
+- JavaScript handles page navigation with direct PDF anchor links
+- Responsive flexbox layout optimized for desktop and mobile
 - Sticky table header for easy reference while scrolling
+- Works reliably on Chrome, Firefox, Safari on all platforms including Android
 
 ---
 
