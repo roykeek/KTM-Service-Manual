@@ -351,15 +351,13 @@
         iframe.style.display = 'none';
     });
     
-    // Handle PDF page navigation clicks - open in new tab for mobile compatibility
+    // Handle PDF page navigation clicks - open in new tab with correct page
     document.querySelectorAll('.page-link').forEach(link => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
-            const pageNum = this.getAttribute('href').match(/#page=(\d+)/)?.[1];
-            if (pageNum) {
-                // Open in new tab with page parameter
-                window.open(`https://docs.google.com/gview?url=https://raw.githubusercontent.com/roykeek/KTM-Service-Manual/main/KTM790_2020_ServiceManual.pdf#page=${pageNum}`, '_blank');
-            }
+            const href = this.getAttribute('href');
+            // Open the raw PDF URL directly with the page anchor
+            window.open(`https://raw.githubusercontent.com/roykeek/KTM-Service-Manual/main/${href}`, '_blank');
         });
     });
     
