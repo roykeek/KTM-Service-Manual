@@ -359,9 +359,12 @@
             // Extract page number
             const pageNum = href.match(/#page=(\d+)/)?.[1];
             if (pageNum) {
-                // Use PDF.js viewer with page parameter
-                const pdfUrl = 'https://mozilla.github.io/pdf.js/web/viewer.html?file=https://cdn.jsdelivr.net/gh/roykeek/KTM-Service-Manual/KTM790_2020_ServiceManual.pdf%23page=' + pageNum;
-                iframe.src = pdfUrl;
+                // Force reload to navigate to correct page
+                iframe.src = '';
+                setTimeout(() => {
+                    const pdfUrl = 'https://mozilla.github.io/pdf.js/web/viewer.html?file=https://cdn.jsdelivr.net/gh/roykeek/KTM-Service-Manual/KTM790_2020_ServiceManual.pdf%23page=' + pageNum;
+                    iframe.src = pdfUrl;
+                }, 100);
             }
         });
     });

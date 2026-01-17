@@ -22,7 +22,7 @@ An interactive web-based service schedule reference tool for the KTM 790 Adventu
 - `index.html` or `KTM_service_Manual.html` - The main HTML file
 - `KTM790_2020_ServiceManual.pdf` - The KTM service manual PDF (stored in the repository)
 
-Note: The PDF is served via jsDelivr CDN for reliable cross-platform compatibility, so you don't need to have the PDF file locally when accessing online.
+Note: The PDF is served via jsDelivr CDN and rendered using Mozilla's PDF.js viewer for reliable cross-platform compatibility on desktop and mobile devices.
 
 ## How to Use
 
@@ -121,12 +121,12 @@ Host the files online for free:
 ## Technical Details
 
 - Pure HTML, CSS, and JavaScript - no external dependencies
-- PDF served via jsDelivr CDN for cross-platform compatibility (desktop and mobile)
-- Uses iframe for PDF embedding with fallback support
-- JavaScript handles page navigation with direct PDF anchor links
+- PDF served via jsDelivr CDN and rendered with Mozilla PDF.js viewer
+- PDF.js provides reliable cross-platform viewing on desktop, mobile, and all browsers
+- JavaScript handles page navigation with direct PDF page anchors
 - Responsive flexbox layout optimized for desktop and mobile
 - Sticky table header for easy reference while scrolling
-- Works reliably on Chrome, Firefox, Safari on all platforms including Android
+- Fully compatible with Chrome, Firefox, Safari on desktop, Android, and iOS
 
 ---
 
