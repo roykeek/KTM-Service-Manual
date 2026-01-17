@@ -316,7 +316,7 @@
             </ul>
             <a href="KTM790_2020_ServiceManual.pdf" download class="download-link" aria-label="Download KTM 790 Service Manual PDF">📥 Download Service Manual</a>
         </div>
-        <iframe src="KTM790_2020_ServiceManual.pdf" name="pdf-frame" id="pdf-frame" title="KTM 790 Adventure R Service Manual PDF Viewer" aria-label="Service manual PDF viewer">
+        <iframe src="https://docs.google.com/gview?url=https://raw.githubusercontent.com/roykeek/KTM-Service-Manual/main/KTM790_2020_ServiceManual.pdf&embedded=true" name="pdf-frame" id="pdf-frame" title="KTM 790 Adventure R Service Manual PDF Viewer" aria-label="Service manual PDF viewer">
             <p>Your browser does not support iframes. Please use the download link above to view the manual.</p>
         </iframe>
     </div>
@@ -351,17 +351,15 @@
         iframe.style.display = 'none';
     });
     
-    // Handle PDF page navigation clicks - force reload to jump to page
+    // Handle PDF page navigation clicks - open in new tab for mobile compatibility
     document.querySelectorAll('.page-link').forEach(link => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
-            const href = this.getAttribute('href');
-            
-            // Force reload by clearing src first, then setting new page
-            iframe.src = '';
-            setTimeout(() => {
-                iframe.src = href;
-            }, 10);
+            const pageNum = this.getAttribute('href').match(/#page=(\d+)/)?.[1];
+            if (pageNum) {
+                // Open in new tab with page parameter
+                window.open(`https://docs.google.com/gview?url=https://raw.githubusercontent.com/roykeek/KTM-Service-Manual/main/KTM790_2020_ServiceManual.pdf#page=${pageNum}`, '_blank');
+            }
         });
     });
     
