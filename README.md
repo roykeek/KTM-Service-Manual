@@ -8,14 +8,16 @@ An interactive web-based service schedule reference tool for the KTM 790 Adventu
 
 - **Comprehensive Service Schedule**: Covers all service intervals from 1,000 km (break-in) to 105,000 km
 - **Split-Screen Interface**: Service schedule table on the left, PDF manual viewer on the right
-- **Clickable Page References**: Click any page number to instantly navigate to that section in the PDF
+- **Smooth Page Navigation**: Click any page number to instantly navigate to that section in the PDF
 - **Organized Categories**: 
   - Engine & Intake
   - Brakes
   - Chassis & Controls
   - Electrical & Cooling
-- **Responsive Design**: Works on desktop and mobile devices
-- **Accessibility Features**: Keyboard navigation support and ARIA labels
+- **Fully Responsive Design**: Optimized layout for both desktop and mobile devices
+  - Desktop: Side-by-side layout with full table and PDF viewer
+  - Mobile: Stacked layout with optimized spacing and sizing
+- **Accessibility Features**: Keyboard navigation support and comprehensive ARIA labels
 
 ## Files Required
 
@@ -112,8 +114,11 @@ Host the files online for free:
 **Problem**: PDF doesn't display in the right panel  
 **Solution**: The application works best when accessed online or through a web server. For local testing, use a Python web server or VS Code Live Server. The PDF is served via jsDelivr CDN for maximum compatibility.
 
-**Problem**: Clicking page numbers doesn't navigate to the correct page  
-**Solution**: Ensure you're using an updated version of the application. Page navigation now uses direct PDF anchor links via jsDelivr.
+**Problem**: Layout appears cramped on mobile  
+**Solution**: The layout automatically adjusts for mobile devices. Try refreshing the page or rotating your device. The table and PDF viewer are stacked vertically on screens smaller than 768px width.
+
+**Problem**: Clicking page numbers doesn't navigate smoothly  
+**Solution**: Ensure you're using an updated version of the application (latest commit). Page navigation is optimized for smooth transitions without flickering.
 
 **Problem**: PDF file not found  
 **Solution**: Ensure `KTM790_2020_ServiceManual.pdf` is in the same folder as the HTML file.
@@ -123,13 +128,18 @@ Host the files online for free:
 - Pure HTML, CSS, and JavaScript - no external dependencies
 - PDF served via jsDelivr CDN and rendered with Mozilla PDF.js viewer
 - PDF.js provides reliable cross-platform viewing on desktop, mobile, and all browsers
-- JavaScript handles page navigation with direct PDF page anchors
-- Responsive flexbox layout optimized for desktop and mobile
+- JavaScript handles page navigation with optimized direct PDF anchor links
+- Responsive flexbox layout with mobile-first approach for all screen sizes
 - Sticky table header for easy reference while scrolling
 - Fully compatible with Chrome, Firefox, Safari on desktop, Android, and iOS
+- **Recent improvements** (January 2026):
+  - Enhanced mobile responsiveness with optimized minimum widths
+  - Improved mobile CSS with better typography and spacing
+  - Fixed PDF navigation for smooth page transitions
+  - Better touch-friendly link sizes on mobile devices
 
 ---
 
-**Created**: January 2026  
+**Last Updated**: January 19, 2026  
 **Motorcycle**: KTM 790 Adventure R (2020)  
 **Manual Version**: 2020 Service Manual
