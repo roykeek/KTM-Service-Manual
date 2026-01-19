@@ -34,7 +34,7 @@
         /* Left Side: The Table */
         .table-panel {
             flex: 1;
-            min-width: 450px; /* Ensures table is readable */
+            min-width: 300px; /* Responsive minimum width for mobile */
             overflow-y: auto;
             padding: 20px;
             background: white;
@@ -170,15 +170,32 @@
 
         /* Responsive adjustments */
         @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.2rem;
+                padding: 0.5rem 0;
+            }
             .container {
                 flex-direction: column;
             }
             .table-panel {
-                max-height: 50vh;
+                flex: 0 0 55vh;
+                max-height: 55vh;
                 min-width: auto;
+                padding: 10px;
             }
             .pdf-panel {
-                height: 50vh;
+                flex: 0 0 45vh;
+                height: 45vh;
+            }
+            table {
+                font-size: 0.8rem;
+            }
+            th, td {
+                padding: 6px 4px;
+            }
+            a.page-link {
+                padding: 2px 6px;
+                font-size: 0.7rem;
             }
         }
     </style>
@@ -359,12 +376,9 @@
             // Extract page number
             const pageNum = href.match(/#page=(\d+)/)?.[1];
             if (pageNum) {
-                // Force reload to navigate to correct page
-                iframe.src = '';
-                setTimeout(() => {
-                    const pdfUrl = 'https://mozilla.github.io/pdf.js/web/viewer.html?file=https://cdn.jsdelivr.net/gh/roykeek/KTM-Service-Manual/KTM790_2020_ServiceManual.pdf%23page=' + pageNum;
-                    iframe.src = pdfUrl;
-                }, 100);
+                // Navigate to specific page in PDF viewer without flickering
+                const pdfUrl = 'https://mozilla.github.io/pdf.js/web/viewer.html?file=https://cdn.jsdelivr.net/gh/roykeek/KTM-Service-Manual/KTM790_2020_ServiceManual.pdf%23page=' + pageNum;
+                iframe.src = pdfUrl;
             }
         });
     });
