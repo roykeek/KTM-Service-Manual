@@ -368,23 +368,19 @@
         iframe.style.display = 'none';
     });
     
-    // Handle PDF page navigation clicks - navigate within iframe
+    // Handle PDF page navigation clicks - open in new window/tab
     document.querySelectorAll('.page-link').forEach(link => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
             const href = this.getAttribute('href');
-            console.log('Link clicked, href:', href);
-            
             // Extract page number from href like "KTM790_2020_ServiceManual.pdf#page=321"
             const match = href.match(/#page=(\d+)/);
             const pageNum = match ? match[1] : null;
-            console.log('Extracted page number:', pageNum);
             
             if (pageNum) {
-                // Navigate to specific page in PDF viewer
-                const pdfUrl = 'https://mozilla.github.io/pdf.js/web/viewer.html?file=https://cdn.jsdelivr.net/gh/roykeek/KTM-Service-Manual/KTM790_2020_ServiceManual.pdf%23page=' + pageNum;
-                console.log('Setting iframe src to:', pdfUrl);
-                iframe.src = pdfUrl;
+                // Open PDF with page number in new tab
+                const pdfUrl = 'https://cdn.jsdelivr.net/gh/roykeek/KTM-Service-Manual/KTM790_2020_ServiceManual.pdf#page=' + pageNum;
+                window.open(pdfUrl, '_blank');
             }
         });
     });
